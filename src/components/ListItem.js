@@ -1,24 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import colors from '../config/colors';
 import metrics from '../config/metrics';
 const dummyUrl =
   'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';
 
-export default function ListItem({item}) {
+export default function ListItem({item, navigation}) {
   return (
-    <View style={styles.container}>
-      <View>
-        <Image
-          style={styles.profileImage}
-          source={{uri: item.profile_image ? item.profile_image : dummyUrl}}
-        />
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Detail', {userData: item})}>
+      <View style={styles.container}>
+        <View>
+          <Image
+            style={styles.profileImage}
+            source={{uri: item.profile_image ? item.profile_image : dummyUrl}}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.nameStyle}>{item?.name}</Text>
+          <Text style={styles.companyStyle}>{item?.company?.name}</Text>
+        </View>
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.nameStyle}>{item?.name}</Text>
-        <Text style={styles.companyStyle}>{item?.company?.name}</Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
