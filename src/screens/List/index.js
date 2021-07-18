@@ -1,10 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
+import ListItem from '../../components/ListItem';
 
 export default function List() {
   return (
     <View style={styles.container}>
-      <Text>Hello World</Text>
+      <FlatList
+        data={[
+          {id: 1, name: 'hi'},
+          {id: 2, name: 'hello'},
+        ]}
+        renderItem={() => <ListItem />}
+      />
     </View>
   );
 }
