@@ -1,7 +1,12 @@
 import * as types from './types';
-export function fetchData(data) {
+export function fetchData() {
   return {
-    type: types.LOGIN_REQUEST,
+    type: types.FETCH_DATA,
+  };
+}
+export function storeData(data) {
+  return {
+    type: types.STORE_DATA,
     data,
   };
 }

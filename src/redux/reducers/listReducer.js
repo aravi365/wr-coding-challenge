@@ -5,14 +5,14 @@ import createReducer from '../lib/createReducer';
 import * as types from '../actions/types';
 
 const initialState = {
-  isLoggedIn: false,
-  userId: null,
+  data: [],
 };
 
 export const listReducer = createReducer(initialState, {
-  [types.LOGIN_REQUEST](state, action) {
+  [types.STORE_DATA](state, action) {
     return {
       ...state,
+      data: action.data,
     };
   },
 });

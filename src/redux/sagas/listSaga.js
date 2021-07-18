@@ -1,23 +1,18 @@
 import {put, call, select, fork, takeEvery} from 'redux-saga/effects';
-
-// Our worker Saga that registers the user
-export default function* loginSaga(action) {
-  const state = yield select(state => state);
-
+import {getLists} from '../../api/getLists';
+import * as listActions from '../actions/listActions';
+// Our worker Saga
+export default function* listSaga(action) {
   try {
-    // let response = yield call(
-    //   loginUser,
-    //   token,
-    //   action.userName,
-    //   action.password,
-    // );
-
+    let response = yield call(getLists);
+    console.log('response test', response);
     if (response) {
-      //do something
+      yield put(listActions.storeData(response));
     } else {
-      // do something
+      alert('No data to display');
     }
   } catch (err) {
+    alert('Something went wrong');
     //show error
   }
 }
