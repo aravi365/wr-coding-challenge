@@ -11,7 +11,7 @@ export default function List({navigation}) {
 
   React.useEffect(() => {
     dispatch(listActions.fetchData());
-  }, []);
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
