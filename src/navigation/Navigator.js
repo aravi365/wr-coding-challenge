@@ -8,8 +8,8 @@ const HomeStack = createStackNavigator();
 export default function Navigation() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="List" children={List} />
-      <HomeStack.Screen name="Detail" children={Detail} />
+      <HomeStack.Screen name="List" component={List} />
+      <HomeStack.Screen name="Detail" component={Detail} />
     </HomeStack.Navigator>
   );
 }

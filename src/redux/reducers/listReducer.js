@@ -3,16 +3,28 @@
  */
 import createReducer from '../lib/createReducer';
 import * as types from '../actions/types';
+import {findElems} from '../../helpers/findElem';
 
 const initialState = {
-  data: [],
+  dataBackup: [],
+  searchData: [],
 };
 
 export const listReducer = createReducer(initialState, {
   [types.STORE_DATA](state, action) {
     return {
       ...state,
-      data: action.data,
+      dataBackup: action.data,
+      searchData: action.data,
+    };
+  },
+  [types.SEARCH_LIST](state, action) {
+    return {
+      ...state,
+      searchData:
+        action.query === ''
+          ? state.dataBackup
+          : state.dataBackup.filter(item => findElems(item, action.query)),
     };
   },
 });
